@@ -5,10 +5,9 @@
     - create .on("click") event to update html
     - store user information in variables
     - push the user information into database using .push method
-
-    
-    - create another function to retrieve data from the database using .on("child_added")
-    - create function to retrieve data for # months worked vs. monthly rate 
+     - create another function to retrieve data from the database using .on("child_added")
+   
+     - create function to retrieve data for # months worked vs. monthly rate 
         - return object with properties #months worked and monthly rate (variables)
           for all employees
 
@@ -37,17 +36,11 @@ var database = firebase.database();
 $("#Submit").on("click", function(event) {
     event.preventDefault();
     var employeeName = $("#employee-name").val();
-    console.log(employeeName);
     var role = $("#role").val();
-    console.log(role);
     var startDate = $("#start-date").val();
-    console.log(startDate);
     var monthsWorked = $("#months-worked").val();
-    console.log(monthsWorked);
     var monthlyRate = $("#monthly-rate").val();
-    console.log(monthlyRate);
     var totalBilled = monthlyRate * monthsWorked;
-    console.log(totalBilled);
     
     var data = {
         "employeeName": employeeName,
@@ -63,6 +56,12 @@ $("#Submit").on("click", function(event) {
 
 
 database.ref().on("child_added", function(snapshot) {
-    console.log(snapshot.val());
-    console.log("done");
+    //console.log(snapshot.val());
 })
+
+function retrieveObjects() {
+    database.ref().on("value", function(snapshot) {
+        console.log(snapshot.val());
+    });
+}
+//retrieveObjects();
