@@ -1,4 +1,7 @@
-body {
+form, .table, .jumbotron {
     width: 900px;
     margin: auto;
+}
+a {
+    color: white;
 }
